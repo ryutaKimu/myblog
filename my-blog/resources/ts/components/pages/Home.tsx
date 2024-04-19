@@ -7,7 +7,6 @@ export const Home:FC = ()=>{
         <>
         <Header/>
         <h1>Homeです</h1>
-        <Link to="/home/blog">ブログ</Link>
         </>
     )
 }

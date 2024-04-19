@@ -7,9 +7,17 @@ Route::get('/', function () {
 });
 
 Route::get('/home/blog', function () {
-    return view('index'); // ここで適切なビューを返却する例です
+    return view('index');
 });
 
 Route::get('/home', function () {
-    return view('index'); // ここで適切なビューを返却する例です
+    return view('index'); 
+});
+
+Route::get('/home/profile', function () {
+    return view('index'); 
+});
+
+Route::get('/home/gallery', function () {
+    return view('index'); 
 });

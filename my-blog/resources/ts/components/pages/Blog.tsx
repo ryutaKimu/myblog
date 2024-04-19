@@ -1,9 +1,11 @@
 import React, { FC } from "react";
+import Header from "../layouts/Header";
 
 const Blog: FC = () => {
   return (
     <>
-      <h1>ブログ一覧表示</h1>
+      <Header/>
+      <h1>ブログ画面です</h1>
     </>
   );
 };

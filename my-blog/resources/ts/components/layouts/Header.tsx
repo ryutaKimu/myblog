@@ -9,6 +9,7 @@ import InputBase from "@mui/material/InputBase";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import { OpenMenu } from "../menu/OpenMenu";
+import { useNavigate } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -60,6 +61,13 @@ export default function Header() {
         console.log(openMenu);
     };
 
+    const navigate = useNavigate();
+
+    const onClickHome = React.useCallback(()=>navigate("/home"),[navigate]);
+    const onClickBlog = React.useCallback(()=>navigate("/home/blog"),[navigate]);
+    const onClickProfile = React.useCallback(()=>navigate("/home/profile"),[navigate]);
+    const onClickGallery = React.useCallback(()=>navigate("/home/gallery"),[navigate]);
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position="static" sx={{ backgroundColor: "#A6B5A5" }}>
@@ -96,7 +104,14 @@ export default function Header() {
                     </Search>
                 </Toolbar>
             </AppBar>
-        <OpenMenu openMenu={openMenu} onClickOpenMenu={onClickOpenMenu} />
+        <OpenMenu 
+        openMenu={openMenu} 
+        onClickOpenMenu={onClickOpenMenu}
+        onClickHome = {onClickHome}
+        onClickBlog = {onClickBlog}
+        onClickProfile = {onClickProfile}
+        onClickGallery = {onClickGallery}
+          />
         </Box>
     );
 }

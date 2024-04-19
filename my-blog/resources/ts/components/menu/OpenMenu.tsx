@@ -10,14 +10,26 @@ import HomeIcon from "@mui/icons-material/Home";
 import Face6Icon from "@mui/icons-material/Face6";
 import ArticleIcon from "@mui/icons-material/Article";
 import PhotoLibraryIcon from "@mui/icons-material/PhotoLibrary";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
     openMenu: boolean;
     onClickOpenMenu: () => void;
+    onClickHome: () => void;
+    onClickBlog: () => void;
+    onClickProfile: () => void;
+    onClickGallery: () => void;
 };
 
 export const OpenMenu: React.FC<Props> = (props) => {
-    const { openMenu, onClickOpenMenu } = props;
+    const {
+        openMenu,
+        onClickOpenMenu,
+        onClickHome,
+        onClickBlog,
+        onClickProfile,
+        onClickGallery,
+    } = props;
 
     const icons = [
         <HomeIcon />,
@@ -25,20 +37,68 @@ export const OpenMenu: React.FC<Props> = (props) => {
         <Face6Icon />,
         <PhotoLibraryIcon />,
     ];
+
+    const navigate = useNavigate();
+
     return (
         <Drawer open={openMenu} onClose={onClickOpenMenu}>
             <Box sx={{ width: 250 }} role="presentation">
                 <List>
-                    {["Top", "ブログ", "自己紹介", "gallery"].map(
-                        (text, index) => (
-                            <ListItem key={text} disablePadding>
-                                <ListItemButton>
-                                    <ListItemIcon>{icons[index]};</ListItemIcon>
-                                    <ListItemText primary={text} />
-                                </ListItemButton>
-                            </ListItem>
-                        )
-                    )}
+                    <ListItem>
+                        <ListItemButton onClick={onClickHome}>
+                            <ListItemText
+                                primary="HOME"
+                                primaryTypographyProps={{ variant: "h5" }}
+                            />
+                            <ListItemIcon>
+                                <HomeIcon
+                                    sx={{ fontSize: "35px", marginRight: 6 }}
+                                />
+                            </ListItemIcon>
+                        </ListItemButton>
+                    </ListItem>
+
+                    <ListItem>
+                        <ListItemButton onClick={onClickBlog}>
+                            <ListItemText
+                                primary="BLOG"
+                                primaryTypographyProps={{ variant: "h5" }}
+                            />
+                            <ListItemIcon>
+                                <ArticleIcon
+                                    sx={{ fontSize: "35px", marginRight: 6 }}
+                                />
+                            </ListItemIcon>
+                        </ListItemButton>
+                    </ListItem>
+
+                    <ListItem>
+                        <ListItemButton onClick={onClickProfile}>
+                            <ListItemText
+                                primary="自己紹介"
+                                primaryTypographyProps={{ variant: "h5" }}
+                            />
+                            <ListItemIcon>
+                                <Face6Icon
+                                    sx={{ fontSize: "35px", marginRight: 6 }}
+                                />
+                            </ListItemIcon>
+                        </ListItemButton>
+                    </ListItem>
+
+                    <ListItem>
+                        <ListItemButton onClick={onClickGallery}>
+                            <ListItemText
+                                primary="Gallery"
+                                primaryTypographyProps={{ variant: "h5" }}
+                            />
+                            <ListItemIcon>
+                                <PhotoLibraryIcon
+                                    sx={{ fontSize: "35px", marginRight: 6 }}
+                                />
+                            </ListItemIcon>
+                        </ListItemButton>
+                    </ListItem>
                 </List>
             </Box>
         </Drawer>
