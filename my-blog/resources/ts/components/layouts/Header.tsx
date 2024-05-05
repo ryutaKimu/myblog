@@ -63,19 +63,10 @@ export default function Header() {
 
     const navigate = useNavigate();
 
-    const onClickHome = React.useCallback(() => navigate("/home"), [navigate]);
-    const onClickBlog = React.useCallback(
-        () => navigate("/home/blog"),
-        [navigate]
-    );
-    const onClickProfile = React.useCallback(
-        () => navigate("/home/profile"),
-        [navigate]
-    );
-    const onClickGallery = React.useCallback(
-        () => navigate("/home/gallery"),
-        [navigate]
-    );
+    const onClickHome = React.useCallback(()=>navigate("/home"),[navigate]);
+    const onClickBlog = React.useCallback(()=>navigate("/home/blog"),[navigate]);
+    const onClickProfile = React.useCallback(()=>navigate("/home/profile"),[navigate]);
+    const onClickGallery = React.useCallback(()=>navigate("/home/gallery"),[navigate]);
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -99,10 +90,6 @@ export default function Header() {
                             flexGrow: 1,
                             display: { xs: "none", sm: "block" },
                         }}
-                        fontFamily="Dancing Script"
-                        fontSize="35px"
-                        textAlign="center"
-                        marginLeft="120px"
                     >
                         RYU Blog
                     </Typography>
@@ -117,14 +104,14 @@ export default function Header() {
                     </Search>
                 </Toolbar>
             </AppBar>
-            <OpenMenu
-                openMenu={openMenu}
-                onClickOpenMenu={onClickOpenMenu}
-                onClickHome={onClickHome}
-                onClickBlog={onClickBlog}
-                onClickProfile={onClickProfile}
-                onClickGallery={onClickGallery}
-            />
+        <OpenMenu 
+        openMenu={openMenu} 
+        onClickOpenMenu={onClickOpenMenu}
+        onClickHome = {onClickHome}
+        onClickBlog = {onClickBlog}
+        onClickProfile = {onClickProfile}
+        onClickGallery = {onClickGallery}
+          />
         </Box>
     );
 }
