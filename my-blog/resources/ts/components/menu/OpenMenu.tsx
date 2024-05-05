@@ -31,15 +31,6 @@ export const OpenMenu: React.FC<Props> = (props) => {
         onClickGallery,
     } = props;
 
-    const icons = [
-        <HomeIcon />,
-        <ArticleIcon />,
-        <Face6Icon />,
-        <PhotoLibraryIcon />,
-    ];
-
-    const navigate = useNavigate();
-
     return (
         <Drawer open={openMenu} onClose={onClickOpenMenu}>
             <Box sx={{ width: 250 }} role="presentation">
