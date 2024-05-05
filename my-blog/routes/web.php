@@ -21,3 +21,7 @@ Route::get('/home/profile', function () {
 Route::get('/home/gallery', function () {
     return view('index'); 
 });
+
+Route::fallback(function(){
+    return view("index");
+});
