@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React,{ FC } from "react";
 import Header from "../layouts/Header";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";

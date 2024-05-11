@@ -71,7 +71,7 @@ const Blog: FC = memo(() => {
       <Grid container spacing={2}>
       {blogDatas.map((blog)=>(
         <Grid item key={blog.id} xs={7} sm={3} md={4}>
-           <div style={{ paddingLeft: "20px",marginBottom:"20px" }}>
+           <div style={{ paddingLeft: "60px",marginBottom:"20px" }}>
             <Card key={blog.id} sx={{ maxWidth: 345 }}>
             <CardActionArea>
               <CardMedia

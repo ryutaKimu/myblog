@@ -1,6 +1,8 @@
+import React from "react"
 import Blog from "../components/pages/Blog"
 import { Gallery } from "../components/pages/Gallery"
 import { Home } from "../components/pages/Home"
+import { Login } from "../components/pages/Login"
 import { NotFound404 } from "../components/pages/NotFound404"
 import { Profile } from "../components/pages/Profile"
 
@@ -9,6 +11,12 @@ export const HomeRouter = [
         path:"/",
         exact: true,
         children: <Home/>
+    },
+
+    {
+        path:"/admin",
+        exact: true,
+        children: <Login/>
     },
 
     {
