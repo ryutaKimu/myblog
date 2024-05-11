@@ -2,8 +2,13 @@ import axios from "axios";
 import styled from "@emotion/styled";
 import { Button,TextField, Typography } from "@mui/material";
 import React, { FC,useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { AuthUserContextType, useAuthUserContext } from "../../provider/AuthProvider";
+import { RoleType, UserType } from "../../types/adminType";
 
+type CustomLocation = {
+    state: { from: { pathname:string } }
+  };
 
 export const Login: FC = () => {
     const [name,setName] = useState('');
@@ -23,11 +28,8 @@ export const Login: FC = () => {
             name: name,
             password: password
         }).then(response =>{
-            console.log('成功です');
-            console.log(response.data);
-            navigate("/home");
+            navigate("/admin/home");
         }).catch(error=>{
-            console.log('失敗です');
             console.error(error.response.data);
         })
     }
@@ -43,13 +45,28 @@ export const Login: FC = () => {
         fechCSRFToken();
     },[]);
 
+    const location:CustomLocation = useLocation() as CustomLocation;
+    const fromPathName:string = location.state.from.pathname;
+    const authUser:AuthUserContextType = useAuthUserContext();
+
+    const signin= (role:RoleType)=>{
+       const user:UserType ={
+        name: "no-name",
+        role:role
+       }
+       authUser.signin(user, () => { 
+        navigate(fromPathName, { replace: true })
+      });
+    }
+
+
   return (
     <Container>
       <LoginCard>
         <Typography>管理者ログイン</Typography>
       <TextField fullWidth label="管理者名" style={{marginTop:"45px"}} value={name} onChange={handleUserNameChange} />
       <TextField fullWidth label="パスワード"style={{marginTop:"45px"}} value={password} onChange={handlePasswordChange} />
-      <Button variant="contained" fullWidth style={{marginTop:"25px"}} onClick={handleLogin}>ログイン</Button>
+      <Button variant="contained" fullWidth style={{marginTop:"25px"}} onClick={()=>{handleLogin(); signin(RoleType.Admin)}}>ログイン</Button>
       </LoginCard>
     </Container>
   );

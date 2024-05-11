@@ -34,7 +34,7 @@ class AdminController extends Controller
     
         // パスワードをハッシュ化してから比較
         if ($credentials['password'] !== $admin->password) {
-            return redirect()->route('login')->withErrors(['message' => 'パスワードが正しくありません。']);
+            return redirect()->route('admin')->withErrors(['message' => 'パスワードが正しくありません。']);
         }
     
         // 認証成功の場合の処理

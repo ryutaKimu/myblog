@@ -1,7 +1,7 @@
 
 import { createRoot } from 'react-dom/client';
 import { App } from './App';
-import { StrictMode } from 'react';
+import  React,{ StrictMode } from 'react';
 
 // index.blade.phpのid="app"を読み込む
 const container = document.getElementById('app');

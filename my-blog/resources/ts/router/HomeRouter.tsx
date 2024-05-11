@@ -1,10 +1,13 @@
 import React from "react"
 import Blog from "../components/pages/Blog"
 import { Gallery } from "../components/pages/Gallery"
+import { useAuth } from "../components/hooks/useAuth"
 import { Home } from "../components/pages/Home"
 import { Login } from "../components/pages/Login"
 import { NotFound404 } from "../components/pages/NotFound404"
 import { Profile } from "../components/pages/Profile"
+import { AdminHome } from "../components/Admin/AdminHome"
+import { RouteAuthGuard } from "../components/RouteAuthGuard"
 
 export const HomeRouter = [
     {
@@ -44,5 +47,10 @@ export const HomeRouter = [
         path:"*",
         exact: true,
         children: <NotFound404/>
+    },
+    {
+        path:"/admin/home",
+        exact: true,
+        children: <RouteAuthGuard component={<AdminHome/>} redirect="/admin"></RouteAuthGuard>
     }
 ]
